@@ -3,6 +3,6 @@
   "short_name": "push notify",
   "start_url": "./index.html",
   "display": "standalone",
-  "gcm_sender_id": "here_set_id",
+  "gcm_sender_id": "731287344402",
   "gcm_user_visible_only": true
 }

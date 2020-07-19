@@ -1,9 +1,9 @@
-var express = require('express');
-var app = express();
-var webPush = require('web-push');
-var bodyParser = require('body-parser')
+require('dotenv').config();
+const express = require('express');
+const webPush = require('web-push');
+const bodyParser = require('body-parser')
 
-
+const app = express();
 app.set('port', 5000);
 app.use(express.static(__dirname + '/'));
 
@@ -19,6 +19,7 @@ app.post('/register', function(req, res) {
 app.post('/sendNotification', function(req, res) {
 
     console.log(req.body)
+    console.log(req.body.endpoint)
 
     webPush.sendNotification(req.body.endpoint, {
         payload: JSON.stringify({
@@ -34,7 +35,7 @@ app.post('/sendNotification', function(req, res) {
             console.log("sent push")
             res.sendStatus(201);
         }, function(err) {
-            console.log('webpusherr', err);
+            console.error('webpusherr', err);
 
         });
 
