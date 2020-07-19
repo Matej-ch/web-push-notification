@@ -1,0 +1,31 @@
+{
+  "name": "notification",
+  "version": "1.0.0",
+  "description": "web push notification with service workers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matej-ch/web-push-notification.git"
+  },
+  "keywords": [
+    "service",
+    "worker",
+    "push",
+    "notification"
+  ],
+  "author": "Matej CH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Matej-ch/web-push-notification/issues"
+  },
+  "homepage": "https://github.com/Matej-ch/web-push-notification#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "web-push": "^3.4.4"
+  }
+}

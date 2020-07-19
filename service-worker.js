@@ -2,13 +2,37 @@
 
 var url = [];
 var count = 0;
+var CACHE_NAME = 'my-site-cache-v1';
+
+var cacheWhitelist = ['my-site-cache-v1'];
+
+
+var urlsToCache = [
+    '/',
+    '/styles/main.css',
+    '/script/main.js'
+];
+
 
 self.addEventListener('install', function(event) {
-    event.waitUntil(self.skipWaiting()); //will install the service worker
+    self.skipWaiting()
+
+    event.waitUntil(caches.open(CACHE_NAME)
+            .then(function(cache) {
+                console.log('Opened cache');
+                return cache.addAll(urlsToCache);
+            })
+        ); //will install the service worker
 });
 
 self.addEventListener('activate', function(event) {
-    event.waitUntil(self.clients.claim()); //will activate the serviceworker
+    event.waitUntil(caches.keys().then(keys => Promise.all(
+        keys.map(key => {
+            if(cacheWhitelist.indexOf(key) === -1) {
+                return caches.delete(key);
+            }
+        })
+    ))/*self.clients.claim()*/); //will activate the serviceworker
 });
 
 // Register event listener for the 'notificationclick' event.

@@ -1,6 +1,6 @@
 {
   "name": "Push Notifications",
-  "short_name": "push_notify",
+  "short_name": "push notify",
   "start_url": "./index.html",
   "display": "standalone",
   "gcm_sender_id": "here_set_id",
